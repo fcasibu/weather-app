@@ -32,6 +32,7 @@ body {
   font-size: var(--fs-small);
   font-weight: var(--fw-400);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .grid-flow {
@@ -59,6 +60,10 @@ body {
 
 .text-dark {
   color: var(--governor-bay-900);
+}
+
+.light {
+  opacity: 0.6;
 }
 
 .text-light {
@@ -132,7 +137,9 @@ body {
 }
 
 .main {
-  place-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   --gap: 4rem;
 }
 
@@ -148,10 +155,31 @@ body {
 }
 
 .right-content .container h2 {
+  --fs-large: 2.5rem;
   z-index: 2;
 }
 
 .right-content .container img {
   position: absolute;
-  inset: 0;
+  right: -20px;
+  top: -20px;
+}
+
+.forecast__daily {
+  overflow-x: scroll;
+}
+
+.forecast-item {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 720px) {
+  .content__footer {
+    flex-direction: column;
+  }
+
+  .content__footer .left-content {
+    order: 2;
+    align-self: flex-start;
+  }
 }

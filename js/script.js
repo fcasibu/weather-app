@@ -101,14 +101,19 @@ const dom = (() => {
     weatherConditionTitle.style.textTransform = "capitalize";
   };
 
-  const changeLocationName = (name) => {
-    locationName.textContent = name;
+  const changeLocationName = (name, country) => {
+    locationName.textContent = `${name}, ${country}`;
   };
 
-  const changeCurrentDate = ({ dt }) => {
-    const timeStamp = dt;
+  const changeCurrentDate = (data) => {
+    const {
+      current: { sunrise },
+      timezone_offset: timeZoneOffset,
+    } = data;
 
-    const date = new Date(timeStamp * 1000).toLocaleDateString("en-US");
+    const date = new Date((sunrise + timeZoneOffset) * 1000).toLocaleDateString(
+      "en-US"
+    );
     currentDate.textContent = date;
   };
 
@@ -169,18 +174,28 @@ const dom = (() => {
 
   const changeWeatherInfo = (data) => {
     changeWeatherTitle(data);
-    changeCurrentDate(data);
     changeCurrentTemp(data);
     changeCurrentConditionImg(data);
     changeCurrentConditions(data);
   };
 
-  return { changeImg, changeWeatherInfo, changeLocationName, changeDailyTemp };
+  return {
+    changeImg,
+    changeWeatherInfo,
+    changeLocationName,
+    changeDailyTemp,
+    changeCurrentDate,
+  };
 })();
 
 const helpers = (() => {
-  const { changeImg, changeWeatherInfo, changeLocationName, changeDailyTemp } =
-    dom;
+  const {
+    changeImg,
+    changeWeatherInfo,
+    changeLocationName,
+    changeDailyTemp,
+    changeCurrentDate,
+  } = dom;
 
   const checkResponse = (res) => {
     if (res.ok) {
@@ -195,7 +210,7 @@ const helpers = (() => {
   };
 
   const getCountryAndCity = ({ name, sys: { country }, coord }) => {
-    changeLocationName(name);
+    changeLocationName(name, country);
     return coord;
   };
 
@@ -206,6 +221,7 @@ const helpers = (() => {
   const getCurrentForecast = (data) => {
     const { current } = data;
     const info = current.weather[0];
+    changeCurrentDate(data);
     changeWeatherInfo(current);
     return data;
   };
@@ -266,18 +282,18 @@ const weatherModule = (() => {
   button.addEventListener("click", (e) => {
     e.preventDefault();
 
-    fetchLocation(input.value);
-    // .then(checkResponse)
-    // .then(getData)
-    // .then(getCountryAndCity)
-    // .then(getCoords)
-    // .then(fetchForecast)
-    // .then(checkResponse)
-    // .then(getData)
-    // .then(getCurrentForecast)
-    // .then(getDailyForecast)
-    // .catch((err) => {
-    //   console.log(err);
-    // });
+    fetchLocation(input.value)
+      .then(checkResponse)
+      .then(getData)
+      .then(getCountryAndCity)
+      .then(getCoords)
+      .then(fetchForecast)
+      .then(checkResponse)
+      .then(getData)
+      .then(getCurrentForecast)
+      .then(getDailyForecast)
+      .catch((err) => {
+        console.log(err);
+      });
   });
 })();
