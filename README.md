@@ -14,7 +14,10 @@ Weather App project for The Odin Project. Made with HTML, CSS, and Javascript.
   - [x] Add date
   - [x] Add temperatures
   - [ ] Add time
-  - [ ] Add wind speed
+  - [x] Add wind speed
   - [ ] Add chance of rain
-  - [ ] Add daily forecast
+  - [x] Add daily forecast
   - [ ] Add hourly forecast
+  - [x] Be able to convert temp between C and Fs
+- Code
+  - [ ] Refactor
