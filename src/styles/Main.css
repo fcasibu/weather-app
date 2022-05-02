@@ -1,0 +1,166 @@
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  flex: 1 0 auto;
+  padding: 4rem;
+  max-width: 800px;
+}
+
+.temp-converters {
+  position: absolute;
+  top: 10px;
+  right: 50px;
+  display: flex;
+  gap: 1rem;
+}
+
+.temp-converters > button {
+  display: grid;
+  place-items: center;
+  background: var(--text-light);
+  color: var(--text-dark);
+  border: 0;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+[disabled] {
+  opacity: 0.5;
+}
+
+.weekly-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+}
+
+.weekly-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--foreground-color);
+  font-size: 0.6rem;
+  border-radius: 0.3rem;
+  width: 120px;
+  height: max-content;
+  padding: 1rem;
+}
+
+.weekly-card h2 {
+  font-weight: 400;
+}
+
+.weekly-card img {
+  width: 56.44px;
+  height: 62px;
+  margin: auto;
+}
+
+.weekly-card > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.weekly-card span {
+  font-size: 0.9rem;
+}
+
+.min {
+  color: var(--text-dark);
+}
+
+.highlights h2 {
+  margin-bottom: 1rem;
+}
+
+.highlight-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.highlight-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--foreground-color);
+  border-radius: 0.3rem;
+  width: 328px;
+  padding: 1rem;
+}
+
+.highlight-card h2 {
+  font-size: 64px;
+}
+
+.highlight-card span {
+  font-size: 36px;
+  font-weight: 300;
+  margin-left: 0.3rem;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.progress-label span {
+  font-size: 0.8rem;
+  color: #a09fb1;
+}
+
+progress {
+  border-radius: 7px;
+  height: 8px;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #e7e7eb;
+  border-radius: 7px;
+}
+
+progress::-webkit-progress-value {
+  background-color: #ffec65;
+  border-radius: 7px;
+}
+
+.wind {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.wind-direction {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+.wind-direction-arrow {
+  position: absolute;
+  color: white;
+  width: 15px;
+  height: 15px;
+  z-index: 10;
+}
+.wind-direction::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  opacity: 0.3;
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  z-index: 1;
+}

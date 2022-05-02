@@ -1,0 +1,183 @@
+.sidebar {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  width: 259px;
+  height: auto;
+  min-height: 100vh;
+  background: var(--foreground-color);
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.drawer {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  width: 259px;
+  height: auto;
+  min-height: 100vh;
+  background: var(--foreground-color);
+  padding: 2.5rem 1rem;
+  overflow: hidden;
+  z-index: 10000;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.drawer form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.drawer input {
+  background: transparent;
+  color: var(--text-light);
+  border: 1px solid var(--text-light);
+  outline: 0;
+  width: 100%;
+  padding: 0.5rem;
+  padding-left: 1.5rem;
+}
+.drawer label {
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: var(--text-dark);
+}
+
+.drawer button {
+  background: var(--btn-light);
+  color: var(--text-light);
+  border: 0;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+}
+
+.search-icon {
+  position: absolute;
+  left: 5px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.dropdown .dropdown-btn {
+  width: 100%;
+  background: transparent;
+  text-align: left;
+  border: 1px solid #616475;
+  width: 100%;
+  color: white;
+  padding: 1rem 0.5rem;
+}
+
+.dropdown-option {
+  position: absolute;
+  border: 1px solid #616475;
+  border-top: none;
+  width: 100%;
+  overflow-y:scroll;
+  max-height:400px;
+}
+
+.dropdown-option > div {
+  width: 100%;
+  padding: 1rem 0.5rem;
+  cursor: pointer;
+}
+
+.dropdown-option > div:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-arrow {
+  position: absolute;
+  top: 17px;
+  right: 10px;
+  font-size: 0.8rem;
+}
+
+.drawer option {
+  color: white;
+}
+
+.sidebar-header {
+  align-self: flex-start;
+}
+
+.sidebar-search-btn {
+  background: var(--btn-dark);
+  color: var(--text-light);
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+}
+
+.sidebar-weather {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100vw;
+  height: 200px;
+}
+
+.sidebar-clouds {
+  position: absolute;
+  height: 100%;
+  opacity: 0.1;
+}
+
+.sidebar-weather-logo {
+  position: absolute;
+  z-index: 10;
+}
+
+.sidebar-weather-logo img {
+  width: 150px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.sidebar-weather-temp h1 {
+  font-size: 4.5rem;
+}
+
+.sidebar-weather-temp span {
+  color: var(--text-dark);
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.sidebar-weather-state h2 {
+  color: var(--text-dark);
+  font-size: 2.25rem;
+  font-weight: 400;
+}
+
+.sidebar-weather-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-dark);
+  font-size: 0.8rem;
+}
+
+.sidebar-weather-info .location {
+  display: flex;
+  gap: 0.5rem;
+}

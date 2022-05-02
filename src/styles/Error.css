@@ -1,0 +1,25 @@
+.error {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  height:100vh;
+  width:100%;
+}
+
+.error-form input {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  color: var(--text-light);
+  border: 1px solid var(--text-dark);
+  outline: 0;
+}
+
+.error-form button {
+  background: var(--btn-light);
+  color: var(--text-light);
+  border: 0;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+}
