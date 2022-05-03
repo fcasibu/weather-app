@@ -3,27 +3,29 @@ import regeneratorRuntime from 'regenerator-runtime';
 async function fetchLocation(location) {
   try {
     const response = await fetch(
-      `https://www.metaweather.com/api/location/search/?query=${location}`,
-      {
-        mode: 'cors',
-        headers: {
-          'Access-Control-Allow-Origin': '*'
-        }
-      }
+      `https://api.allorigins.win/get?url=${encodeURIComponent(
+        `https://www.metaweather.com/api/location/search/?query=${location}`
+      )}`
     );
     const data = await response.json();
-    const id = data[0].woeid;
+    const contents = JSON.parse(data.contents);
+    const id = contents[0].woeid;
 
     const newRes = await fetchFullInfo(id);
     const newData = await newRes.json();
-    return newData;
+    const newContents = JSON.parse(newData.contents);
+    return newContents;
   } catch (error) {
     return Promise.reject({ message: 'Invalid Location' });
   }
 }
 
 function fetchFullInfo(id) {
-  return fetch(`https://www.metaweather.com/api/location/${id}`);
+  return fetch(
+    `https://api.allorigins.win/get?url=${encodeURIComponent(
+      `https://www.metaweather.com/api/location/${id}`
+    )}`
+  );
 }
 
 export default fetchLocation;
