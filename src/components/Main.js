@@ -27,6 +27,7 @@ const Main = React.memo(function Main({ data, setData }) {
   const [isClicked, setIsClicked] = useState(true);
 
   useEffect(() => {
+    console.log(dataToday);
     if (!dataToday.tempSymbol || dataToday.tempSymbol === 'C') {
       setIsClicked(true);
     } else if (dataToday.tempSymbol === 'F') {
@@ -43,10 +44,11 @@ const Main = React.memo(function Main({ data, setData }) {
 
   function renderWeeklyData() {
     return dataWeekly.map((weather, index) => {
+      const date = new Date(weather.applicable_date).toISOString();
       const image = weather.weather_state_name.split(' ').join('');
       return (
         <div key={index} className="weekly-card">
-          <h2>{index === 0 ? 'Tomorrow' : formatDate(weather.created)}</h2>
+          <h2>{index === 0 ? 'Tomorrow' : formatDate(date)}</h2>
           <img src={`./images/${image}.png`} />
           <div>
             <span className="max">
@@ -62,6 +64,7 @@ const Main = React.memo(function Main({ data, setData }) {
   }
 
   function renderHighlight() {
+    console.log(dataToday.wind_direction);
     return (
       <>
         <div className="highlight-card">
@@ -72,7 +75,9 @@ const Main = React.memo(function Main({ data, setData }) {
           </h2>
           <IconContext.Provider
             value={{
-              style: { transform: `rotate(${dataToday.wind_direction}deg)` },
+              style: {
+                transform: `rotate(${dataToday.wind_direction - 40}deg)`
+              },
               className: 'wind-direction-arrow'
             }}
           >
